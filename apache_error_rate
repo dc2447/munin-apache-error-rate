@@ -18,7 +18,7 @@ if [ "$1" = "config" ]; then
 
 	for code in $mystatuscodes
 		do
-		echo "${code}.label ${code} Errors"
+		echo "error_${code}.label ${code} Errors"
 	done
 
         echo 'graph_info The number of apache errors in logs'
@@ -27,7 +27,7 @@ fi
 
         for code in $mystatuscodes
                 do
-		echo -n "${code}.value "
+		echo -n "error_${code}.value "
 		tail -${myloglines} ${myaccesslog} | awk '{print $9 }' | grep -c "${code}"
         done
 
