@@ -16,10 +16,10 @@ if [ "$1" = "config" ]; then
         echo 'graph_vlabel rate'
         echo 'graph_scale no'
 
-	for code in $mystatuscodes
-		do
-		echo "error_${code}.label ${code} Errors"
-	done
+        for code in $mystatuscodes
+                do
+                echo "error_${code}.label ${code} Errors"
+        done
 
         echo 'graph_info The number of apache errors in logs'
         exit 0
@@ -27,8 +27,8 @@ fi
 
         for code in $mystatuscodes
                 do
-		echo -n "error_${code}.value "
-		tail -${myloglines} ${myaccesslog} | awk '{print $9 }' | grep -c "${code}"
+                echo -n "error_${code}.value "
+                tail -${myloglines} ${myaccesslog} | grep -o 'HTTP/.\.." [0-9]\{3\} ' | grep -c " ${code} "
         done
 
 exit 0
