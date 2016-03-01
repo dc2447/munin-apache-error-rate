@@ -3,9 +3,9 @@
 # If run with the "config"-parameter, give out information on how the
 # graphs should look.
 
-mystatuscodes="400 401 403 404 500 503 504"
-myloglines="10000"
-myaccesslog="/var/log/apache2/access.log"
+mystatuscodes="${mystatuscodes:-400 401 403 404 500 503 504}"
+myloglines="${myloglines:-10000}"
+myaccesslog="${myaccesslog:-/var/log/apache2/access.log}"
 
 if [ "$1" = "config" ]; then
 
